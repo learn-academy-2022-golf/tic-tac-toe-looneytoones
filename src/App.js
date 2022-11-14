@@ -5,9 +5,20 @@ import './App.css'
 const App = () => {
 
   const [squares, setSquares] = useState(Array(9).fill(null))
+
+const [isX, setX] = useState(true)
+
   const handleGame = (index) => {
     const newSquares = [...squares]
-    newSquares[index] = "X"
+    if (newSquares[index]) return
+    if(isX) {
+      newSquares[index] = "X"
+    }
+    if (!isX) {
+      newSquares[index] = "O"
+    }
+    setX(!isX)
+
     setSquares(newSquares)
 
   }
