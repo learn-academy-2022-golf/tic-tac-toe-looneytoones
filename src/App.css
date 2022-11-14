@@ -16,5 +16,11 @@
 
 .header {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.winner {
+  display: flex;
   justify-content: center;
 }
