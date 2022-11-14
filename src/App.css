@@ -3,3 +3,14 @@
   width: 100px;
   border: 2px solid black;
 }
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
