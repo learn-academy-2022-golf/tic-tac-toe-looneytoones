@@ -5,7 +5,12 @@ import './App.css'
 const App = () => {
 
   const [squares, setSquares] = useState(Array(9).fill(null))
+  const handleGame = (index) => {
+    const newSquares = [...squares]
+    newSquares[index] = "X"
+    setSquares(newSquares)
 
+  }
   return (
     <div className='main'>
     <div className='header'>
@@ -15,10 +20,13 @@ const App = () => {
       <div className='gameboard'>
       {squares.map((value, index) => {
         return(
-        <Square value={value}
-                index={index}
+          <Square 
+          value={value}
+          index={index}
+          key={index}
+          handleGame={handleGame}
                 />
-        )
+          )
       })}
 
       </div>    
