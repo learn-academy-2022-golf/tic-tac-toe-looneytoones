@@ -1,3 +1,22 @@
+.main {
+  position: relative; 
+  height: 100vh;  
+}
+
+.main::before {
+    content: "";
+     background-image: url("https://i.pinimg.com/474x/09/33/95/093395fe167d629bff843bde9debaf2d.jpg");
+    background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.4;
+      z-index: -1;
+ 
+}
+
 .square {
   height: 100px;
   width: 100px;
@@ -5,6 +24,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
+}
+
+.square:hover {
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🔥</text></svg>") 16 0,auto; /*!emojicursor.app*/
+  
 }
 
 .gameboard {
@@ -14,36 +39,36 @@
 }
 
 .gameboard div:nth-child(1) {
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;
+  border-right: 6px solid black;
+  border-bottom: 6px solid black;
 }
 .gameboard div:nth-child(2) {
 
-  border-bottom: 2px solid black;
+  border-bottom: 6px solid black;
 }
 .gameboard div:nth-child(3) {
-  border-left: 2px solid black;
-  border-bottom: 2px solid black;
+  border-left: 6px solid black;
+  border-bottom: 6px solid black;
 }
 .gameboard div:nth-child(4) {
-  border-right: 2px solid black;
+  border-right: 6px solid black;
  
 }
 .gameboard div:nth-child(6) {
-  border-left: 2px solid black;
+  border-left: 6px solid black;
   
 }
 .gameboard div:nth-child(7) {
-  border-right: 2px solid black;
-  border-top: 2px solid black;
+  border-right: 6px solid black;
+  border-top: 6px solid black;
 }
 .gameboard div:nth-child(8) {
  
-  border-top: 2px solid black;
+  border-top: 6px solid black;
 }
 .gameboard div:nth-child(9) {
-  border-left: 2px solid black;
-  border-top: 2px solid black;
+  border-left: 6px solid black;
+  border-top: 6px solid black;
 }
 
 
@@ -51,11 +76,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 16px;
 }
 
 .winner {
+  margin-top: 16px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: red;
+  color: white;
+  width: 400px;
+  margin-inline: auto;
+  border-radius: 25px;
+  border: 2px solid black
 }
 
 .button-div {
@@ -63,4 +97,56 @@
   justify-content: center;
   align-items: center;
   margin-top: 16px;
+}
+
+.playerSelect {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-weight: bold;
+ 
+}
+
+.playerIs {
+  font-size: 32px;
+  font-weight: bold;
+  padding-inline: 16px;
+}
+
+.header h1 {
+  font-size: 44px;
+  font-weight: bold;
+  padding-inline: 16px;
+  border-bottom: 2px solid red;
+}
+
+.playerSelect select {
+  margin-right: 16px;
+  width: 50px;
+  height: 25px;
+}
+
+.playerSelect select:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.playerSelect label {
+  font-size: 32px;
+}
+
+button {
+  width: 200px;
+  font-size: 32px;
+  border-radius: 15px;
+  margin-top: 16px;
+  background-color: white;
+}
+
+button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+
 }
