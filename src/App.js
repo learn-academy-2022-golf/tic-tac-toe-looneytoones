@@ -48,6 +48,9 @@ const calculateWinner = (squares) =>  {
 
   useEffect(()=> {
     calculateWinner(squares)
+    for (let i = 0; i < squares.length; i++) {
+  
+    }
   }, [squares])
 
   return (
