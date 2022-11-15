@@ -9,8 +9,8 @@ const [squares, setSquares] = useState(Array(9).fill(null))
 const [isX, setX] = useState(true)
 const [winner, setWinner] = useState()
 const [tieGame, setTieGame] = useState(false)
-const emojis1 = ["X", "🧘🏼‍♀️", "⛳️", "🏑"]
-const emojis2 = ["O", "📱", "💡", "🧮"]
+const emojis1 = ["X", "🧘🏼‍♀️", "⛳️", "🏑", "☃️"]
+const emojis2 = ["O", "📱", "💡", "🧮", "☔️"]
 const [selectEmoji1, setSelectEmoji1] = useState("X")
 const [selectEmoji2, setSelectEmoji2] = useState("O")
 
@@ -20,10 +20,11 @@ const handleReset = () => {
   setX(true)
   setWinner("")
   setTieGame(false)
+  setSelectEmoji1(selectEmoji1)
+  setSelectEmoji2(selectEmoji2)
 }
 
 const setselectEmoji1 = (e) => {
-  console.log(e.target.value);
   setSelectEmoji1(e.target.value)
 }
 
@@ -55,10 +56,7 @@ const calculateWinner = (squares) =>  {
   const handleGame = (index) => {
     const newSquares = [...squares]
     if (calculateWinner(newSquares) || newSquares[index]) return
-     newSquares[index] = isX ? selectEmoji1 : selectEmoji2
-     console.log(selectEmoji1);
-     console.log(selectEmoji2);
-
+     newSquares[index] = isX ? selectEmoji1  : selectEmoji2 
     setX(!isX)
     setSquares(newSquares)
   }
@@ -74,12 +72,12 @@ const calculateWinner = (squares) =>  {
   }, [squares])
 
   return (
-    <div className='main'>
+    <div className='main' >
     <div className='header'>
-      <h1>Tic Tac Toe</h1>
+      <h1>Looney Tic Tac Toe</h1>
       <div className='playerSelect'>
 
-        <label>Player 1:</label>
+        <label>{selectEmoji1}:</label>
         <select onChange={setselectEmoji1}>
           {emojis1.map((item, index) => {
             return (
@@ -89,8 +87,7 @@ const calculateWinner = (squares) =>  {
             )
           })}
         </select>
-
-        <label>Player 2:</label>
+        <label>{selectEmoji2}: </label>
         <select onChange={setselectEmoji2}>
           {emojis2.map((item, index) => {
             return (
@@ -100,13 +97,12 @@ const calculateWinner = (squares) =>  {
             )
           })}
         </select>
-
-
       </div>
-      {isX ? <h3>Player X</h3> : <h3>Player O</h3>}
-    </div>
-      
-      <div className='gameboard'>
+      <div className="playerIs">
+        {isX ? <h3>Player {selectEmoji1}</h3> : <h3>Player {selectEmoji2}</h3>}
+      </div>
+    </div>   
+      <div className='gameboard' >
       {squares.map((value, index) => {
         return(
           <Square 
@@ -121,7 +117,6 @@ const calculateWinner = (squares) =>  {
       <div className="button-div">
         <button onClick={handleReset}>Reset</button>
       </div>
-      
       {winner ? <div className="winner">
         <h2>The Winner Is: {winner}</h2>
         </div> : <></>}  
