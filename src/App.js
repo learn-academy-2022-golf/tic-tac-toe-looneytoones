@@ -6,15 +6,15 @@ import { useEffect } from 'react'
 const App = () => {
 
 const [squares, setSquares] = useState(Array(9).fill(null))
-
 const [isX, setX] = useState(true)
-
 const [winner, setWinner] = useState()
+const [tieGame, setTieGame] = useState(false)
 
 const handleReset = () => {
   setSquares(Array(9).fill(null))
   setX(true)
   setWinner("")
+  setTieGame(false)
 }
 
 const calculateWinner = (squares) =>  {
@@ -46,11 +46,14 @@ const calculateWinner = (squares) =>  {
     setSquares(newSquares)
   }
 
+  const tie = (squares) => {
+    if (!squares.includes(null))
+      setTieGame(true)
+  }
+
   useEffect(()=> {
     calculateWinner(squares)
-    for (let i = 0; i < squares.length; i++) {
-  
-    }
+    tie(squares)
   }, [squares])
 
   return (
@@ -72,11 +75,16 @@ const calculateWinner = (squares) =>  {
           )
       })}
       </div> 
-      <button onClick={handleReset}>Reset</button>
+      <div className="button-div">
+        <button onClick={handleReset}>Reset</button>
+      </div>
+      
       {winner ? <div className="winner">
         <h2>The Winner Is: {winner}</h2>
         </div> : <></>}  
-      
+        {tieGame ? <div className="winner">
+        <h2>The Game is a Tie!</h2>
+        </div> : <></>}  
     </div>
   )
 }
