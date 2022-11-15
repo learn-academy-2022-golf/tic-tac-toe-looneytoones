@@ -5,9 +5,17 @@ import { useEffect } from 'react'
 
 const App = () => {
 
-  const [squares, setSquares] = useState(Array(9).fill(null))
+const [squares, setSquares] = useState(Array(9).fill(null))
+
 const [isX, setX] = useState(true)
+
 const [winner, setWinner] = useState()
+
+const handleReset = () => {
+  setSquares(Array(9).fill(null))
+  setX(true)
+  setWinner("")
+}
 
 const calculateWinner = (squares) =>  {
   const lines = [
@@ -26,7 +34,7 @@ const calculateWinner = (squares) =>  {
       setWinner(squares[a])
       return squares[a];
     }
-  }
+  }  
   return null;
 }
 
@@ -40,6 +48,9 @@ const calculateWinner = (squares) =>  {
 
   useEffect(()=> {
     calculateWinner(squares)
+    for (let i = 0; i < squares.length; i++) {
+  
+    }
   }, [squares])
 
   return (
@@ -61,6 +72,7 @@ const calculateWinner = (squares) =>  {
           )
       })}
       </div> 
+      <button onClick={handleReset}>Reset</button>
       {winner ? <div className="winner">
         <h2>The Winner Is: {winner}</h2>
         </div> : <></>}  
